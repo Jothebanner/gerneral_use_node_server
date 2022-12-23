@@ -1,10 +1,16 @@
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const hostname = '127.0.0.1';
 const port = 3002;
 
-const server = http.createServer((req, res) => {
+const options = {
+    key: fs.readFileSync('../https/privkey.pem'),
+    cert: fs.readFileSync('../https/cert.pem')
+}
+
+const server = https.createServer(options, (req, res) => {
     let filePath = req.url;
     if (filePath == '/')
         filePath = '/index.html';
