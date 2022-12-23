@@ -1,8 +1,8 @@
-const http = require('http');
+//const http = require('http'); // https by default // Note to future self: use certbot; vvv easy
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const hostname = '127.0.0.1';
+//const hostname = '127.0.0.1'; // listen for everything by default
 const port = 3002;
 
 const options = {
@@ -49,6 +49,6 @@ const server = https.createServer(options, (req, res) => {
     })
 });
 
-server.listen(port, hostname, () => {
+server.listen(port, () => {
     console.log("Server started on port " + port);
 });
